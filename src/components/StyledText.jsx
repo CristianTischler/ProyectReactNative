@@ -4,7 +4,7 @@ import theme from "../theme.js";
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: theme.text.fontSize.body,
+    fontSize: theme.fontSizes.body,
     color: theme.colors.textPrimary,
     fontFamily: theme.fonts.main,
     fontWeight: theme.fontWeights.normal,
@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
   },
   subheading: {
-    fontSize: theme.text.fontSize.subheading,
+    fontSize: theme.fontSizes.subheading,
+  },
+  textAlignCenter: {
+    textAlign: "center",
   },
 });
 
@@ -29,10 +32,12 @@ export default function StyledText({
   fontSize,
   fontWeight,
   style,
+  align,
   ...restOfProps
 }) {
   const textStyles = [
     styles.text,
+    align === "center" && styles.textAlignCenter,
     color === "primary" && styles.colorPrimary,
     color === "secondary" && styles.colorSecondary,
     fontSize === "subheading" && styles.subheading,
